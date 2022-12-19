@@ -1,0 +1,212 @@
+estudiacion de vue
+
+para declara un array en el html
+
+cosa: palabra que va dentro del elemento
+index: varible iteraodra que va en el kry
+
+    <h1 v-for="(cosa, index) in platas" :key="index">{{ cosa }}</h1>
+
+data: funcion(){
+
+return {
+      platas: ["gremio", "hjas", "seco"],
+  }
+}
+
+
+cuando se quieren definitr valore numero ejeplo de un contador se utiliza lo siguiente 
+    <button @click="veces += 1">haga clic aqui papu</button>
+    <p>se ha hecho clic {{ veces }}</p>
+pero antes de eos se debe declarar en el data
+      numero: 0,
+
+para llamar un metodo solo se debe crear un boton con la propiedad @click y se le agrega el nombre 
+del metodo
+
+    <button @click="quitar">aaa</button>
+
+
+<template>
+  <div id="app">
+    <ul>
+      <li v-for="(index, persona) in nombres" :key="persona">{{ index }}</li>
+    </ul>
+    <input type="text" v-model="person" />
+    <div style="color: red" v-show="validarDatos">tienes muchas tareas</div>
+    <div v-if="validarDatos">si sigues asi tu salud no va a ir muy bien</div>
+    <div v-else>todo bien puede continuar joven mmmm</div>
+    <button @click="agregarTarea">agregar persona</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "App",
+  data: function () {
+    return {
+      nombres: ["camilo", "santiago", "geovani"],
+      person: "",
+    };
+  },
+  methods: {
+    agregarTarea() {
+      const msg = this.person.trim();
+      if (msg.length < 1) {
+        return;
+      }
+      this.nombres.push(msg);
+      this.person = "";
+    },
+  },
+  computed: {
+    validarDatos() {
+      if (this.nombres.length > 4) {
+        return true;
+      }
+      return false;
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+ul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  background-color: #ee09cf;
+  display: inline-block;
+  padding-right: 20px;
+}
+ul li:hover {
+  background-color: #a51692;
+}
+input {
+  display: block;
+}
+button {
+  display: inline-block;
+}
+</style>
+
+diferencia entre v-if y v-show
+
+la diferencia es basciamnete que el v-show los oculta con un dysplay: none.
+el v-if no renderiza los elementos que no cumplen la condicion y el v-show si los
+renderiza pero los oculat con el dysplay: none.
+
+la funcion data en lo que retorna es basicamnete nuestro deposito oara crear variables
+
+otra herramineta para capturar datos es la
+v-bind:value="la variable"
+
+
+La diferencia fundamental es la reactividad. Las computadas son reactivas, como las 
+variables, mientras que los métodos no lo son.
+
+Que las computadas sean reactivas quiere decir que cuando el valor del data cambie, 
+la computada automáticamente se va a ejecutar y va a devolver el nuevo valor.
+
+Las computadas NO pueden recibir parámetros de entrada, mientas que los métodos sí. 
+Las computadas siempre tienen que hace return de un valor, mientras que los métodos 
+puede que no devuelvan nada.
+
+Otra diferencia es que las propiedades computadas tienen caché, es decir, utilizar 
+propiedades computadas es más óptimo porque si Vue detecta que la computada va a devolver 
+el mismo valor, no ejecutará la computada ahorrando cálculos .Los métodos se ejecutan siempre 
+cada vez aunque el resultado sea el mismo.
+
+Por último decir que es normal llamar a las computadas desde dentro de los métodos, mientras 
+que ejecutar métodos dentro de computadas no se recomienda (por lo de la caché), es mejor busca 
+otra alternativa para no tener que hacer eso.
+
+v-once deja el elmento esrtaico al renderizar la pagina
+otro atributo interesante es el v-bind o : lo cual no permite enlazar varibles de js con 
+etiquteas de html
+
+<template>
+  <div id="app">
+    <ul>
+      <li v-for="(index, persona) in nombres" :key="persona" v-once>
+        {{ index }}
+      </li>
+    </ul>
+    <input type="text" v-model="person" />
+    <div style="color: red" v-show="validarDatos">tienes muchas tareas</div>
+    <div v-if="validarDatos">si sigues asi tu salud no va a ir muy bien</div>
+    <div v-else>todo bien puede continuar joven mmmm</div>
+    <button @click="agregarTarea">agregar persona</button>
+    <h1 v-for="(index, i) in lista" :key="i" @click="alertfrut(index)">
+      <!-- {{ index }} -->
+      <div v-if="i % 2 == 0" style="color: red">
+        {{ index }}
+      </div>
+      <div v-else style="color: aqua">{{ index }}</div>
+    </h1>
+    <img
+      src="https://www.xtrafondos.com/descargar.php?id=5846&resolucion=2560x1440"
+      alt=""
+      @click="mensaje()"
+    />
+
+    <button @click="contador += 1">seleccione{{ contador }}</button>
+  </div>
+</template>
+
+<script>
+export default {
+  name: "App",
+  data: function () {
+    return {
+      nombres: ["camilo", "santiago", "geovani"],
+      person: "",
+      lista: ["hermano", "hermana", "sister", "brother"],
+      contador: 1,
+    };
+  },
+  methods: {
+    agregarTarea() {
+      const msg = this.person.trim();
+      if (msg.length < 1) {
+        return;
+      }
+      this.nombres.push(msg);
+      this.person = "";
+    },
+    alertfrut(item) {
+      alert(item);
+    },
+    mensaje() {
+      alert("hermosa si o que");
+    },
+  },
+  computed: {
+    validarDatos() {
+      if (this.nombres.length > 4) {
+        return true;
+      }
+      return false;
+    },
+  },
+};
+</script>
+
+<style lang="scss">
+ul {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 30px;
+  background-color: #ee09cf;
+  display: inline-block;
+  padding-right: 20px;
+}
+ul li:hover {
+  background-color: #a51692;
+}
+input {
+  display: block;
+}
+button {
+  display: inline-block;
+  background-color: linear-gradient(top, red, gold);
+}
+</style>

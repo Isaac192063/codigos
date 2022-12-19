@@ -1,0 +1,75 @@
+node --version
+
+comando para instalar el vue ( npm i -g @vue/cli )
+
+Crear una carpeta / Proyecto ( vue create vue-class )
+-Manually select features
+-Babel, CSS Pre-processors, Linter / Formatter
+-2.x
+-Sass/SCSS (with dart-sass)
+-ESLint + Prettier
+-Lint on save
+-In deducated config files
+-Y
+
+Buscar en las extensiones de Visual
+Volar - Extension de vue
+Prettier - Formatear el codigo "Basura"
+ESLint
+
+Borrar la carpeta de Componente el documento de HelloWordl
+Borrar todo de HelloWorld en App.vue
+
+Crear un archivo llamado ".prettierrc.json" por fuera de las carpetas
+(Dentro de la carpeta .prettierrc.json)
+{
+    "singleQuote": false, //Para tulizar siempre comillas dobles ("")
+    "trailingComma": "es5", //Para colocar comas (,) automaticamente
+    "tabWidth": 2,    //Espacio del tabulador
+    "semi": true,     //Coloca (;) automaticamente
+    "arrowParens": "always"  //Coloca parentesis automaticamente en funciones tipo flecha
+}
+{
+    "singleQuote": false, 
+    "trailingComma": "es5",
+    "tabWidth": 2,    
+    "semi": true,     
+    "arrowParens": "always"  
+}
+Buscar dentro del codigo Ctrl + Shift + P     Auto Fixel (ESLint)
+
+Configuracion general
+-Actions
+-Editar en settings.json
+ES EN LA OPCION DE AREA DE TRABAJO
+"settings": {
+		"editor.codeActionsOnSave": {
+		"source.fixAll": true
+		}
+}
+
+//Si se crea una lineas locales, se dejan porque sino, generan error dentro del archivo
+
+<template>
+  <div id="app">
+    <img alt="Vue logo" src="./assets/logo.png" />
+  </div>
+</template>
+
+Hay que colocar todos los atributos dentro del Div que se encuentra en el template (template > div)
+
+<script>
+export default {
+  name: "App",
+  components: {},
+};
+</script>
+
+Dentro del script siempre debe de ir el "export default"
+
+Descargar extension de google
+https://chrome.google.com/webstore/detail/vuejs-devtools/nhdogjmejiglipccpnnnanhbledajbpd/related
+
+Directiva de vue (v-model="nombre")//Donde nombre es igual a una data
+
+
